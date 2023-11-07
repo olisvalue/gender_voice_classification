@@ -58,7 +58,7 @@ class Model(nn.Module):
         for conv_block in self.conv_blocks:
             x = conv_block(x)
         x = x.view(x.size(0), -1)  # Flatten the feature maps
-        x = self.relu(self.fc1.linear(x))
+        x = self.relu(self.fc1(x))
         x = self.softmax(self.fc2(x))
 
         if self.training:
